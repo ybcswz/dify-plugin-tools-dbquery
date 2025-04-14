@@ -41,9 +41,6 @@ class SqlQueryTool(Tool):
         statements = sqlparse.parse(query_sql)
         if len(statements) != 1:
             raise ValueError("Only a single query SQL can be filled")
-        statement = statements[0]
-        if statement.get_type() != 'SELECT':
-            raise ValueError("Query SQL can only be a single SELECT statement")
 
         try:
             db = DbUtil(db_type=db_type,
